@@ -1,7 +1,6 @@
 import json
 import logging
-import configparser
-import sys
+import lib.config as config
 from time import sleep, time
 from tencentcloud.common import credential
 from tencentcloud.common.profile.client_profile import ClientProfile
@@ -11,10 +10,8 @@ from tencentcloud.tmt.v20180321 import tmt_client, models
 
 old_time = 0
 
-config = configparser.ConfigParser()
-config.read('config.ini', 'utf-8')
 
-cred = credential.Credential(config.get('api', 'secretId'), config.get('api', 'secretKey'))
+cred = credential.Credential(config.secretId, config.secretKey)
 httpProfile = HttpProfile()
 httpProfile.endpoint = "tmt.tencentcloudapi.com"
 

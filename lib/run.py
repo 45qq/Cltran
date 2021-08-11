@@ -1,5 +1,5 @@
-from lib import translation as tran
 from progress.bar import Bar
+import lib.translation as tran
 import sys
 import re
 
