@@ -12,6 +12,10 @@ config.read(config_path, 'utf-8')
 secretId = config.get('api', 'secretId')
 secretKey = config.get('api', 'secretKey')
 
+if secretId == '' or secretKey == '':
+    print("请先在 cltan.ini 文件中填写 secretId 和 secretKey。")
+    exit()
+
 # cmd
 timeout = config.getint('cmd', 'timeout')
 show_original_text = config.getboolean('cmd', 'show_original_text')
