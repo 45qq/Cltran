@@ -1,16 +1,9 @@
 import configparser
-import platform
 import sys
 from os import path
 
 
-config_path = ''
-if platform.system() == 'Windows':
-    config_path = path.join(path.dirname(path.realpath(sys.argv[0])), 'cltran.ini')
-elif platform.system() == 'Linux':
-    config_path = path.join(path.dirname(path.realpath(sys.executable)), 'cltran.ini')
-else:
-    config_path = path.join(sys.path[0], 'cltran.ini')
+config_path = path.join(path.dirname(path.realpath(sys.argv[0])), 'cltran.ini')
 
 config = configparser.ConfigParser()
 config.read(config_path, 'utf-8')
