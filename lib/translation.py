@@ -1,6 +1,6 @@
 import json
-import logging
 import lib.config as config
+from colorama import Fore, Back, Style
 from time import sleep, time
 from tencentcloud.common import credential
 from tencentcloud.common.profile.client_profile import ClientProfile
@@ -8,8 +8,8 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.tmt.v20180321 import tmt_client, models
 
-old_time = 0
 
+old_time = 0
 
 cred = credential.Credential(config.secretId, config.secretKey)
 httpProfile = HttpProfile()
@@ -40,8 +40,8 @@ def get_tran(text):
 
         return client.TextTranslate(req).TargetText
 
-    except TencentCloudSDKException as err:
-        logging.error("请检查网络连接！", err.args)
+    except TencentCloudSDKException:
+        print(Fore.RED + Back.BLACK + Style.BRIGHT + "\n请检查网络连接或 secretId 和 secretKey 是否正确！")
         return text
 
 
@@ -65,6 +65,6 @@ def get_tran_list(text_list):
 
         return client.TextTranslateBatch(req).TargetTextList
 
-    except TencentCloudSDKException as err:
-        logging.error("请检查网络连接！", err.args)
+    except TencentCloudSDKException:
+        print(Fore.RED + Back.BLACK + Style.BRIGHT + "\n请检查网络连接或 secretId 和 secretKey 是否正确！")
         return text_list

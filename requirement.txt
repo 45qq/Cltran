@@ -1,2 +1,3 @@
 tencentcloud-sdk-python
 progress
+colorama

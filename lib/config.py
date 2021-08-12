@@ -14,7 +14,7 @@ secretKey = config.get('api', 'secretKey')
 
 if secretId == '' or secretKey == '':
     print("请先在 cltan.ini 文件中填写 secretId 和 secretKey。")
-    exit()
+    sys.exit(0)
 
 # cmd
 timeout = config.getint('cmd', 'timeout')

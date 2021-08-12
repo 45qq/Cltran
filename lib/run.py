@@ -1,7 +1,11 @@
 from progress.bar import Bar
+from colorama import init, Fore, Back, Style
 import lib.translation as tran
 import sys
 import re
+
+
+init(autoreset=True)
 
 
 def tran_text(bar, content_lines, relist, retu_relist=None):
@@ -67,12 +71,10 @@ def tran_texts(bar, content_lines, relist, retu_relist=None):
                 bar.next(-1)
 
             trs = tran.get_tran_list(tran_lines)
-            j = 0
-            while j < len(trs):
-                re_content_line = re_content_lines[j]
+            for tr, re_content_line in zip(trs, re_content_lines):
                 re_content = re_content_line[1]
 
-                new_line = "%s%s%s" % (re_content[1][:re_content[2]], trs[j], re_content[1][re_content[2]:])
+                new_line = "%s%s%s" % (re_content[1][:re_content[2]], tr, re_content[1][re_content[2]:])
 
                 if retu_relist:
                     re_contents = get_ret_re_content(new_line, retu_relist)
@@ -81,7 +83,6 @@ def tran_texts(bar, content_lines, relist, retu_relist=None):
 
                 lines[re_content_line[0]] = new_line
 
-                j += 1
             bar.next(len(tran_lines))
             tran_lines.clear()
             re_content_lines.clear()
@@ -106,7 +107,7 @@ def get_re_content(line, relist):
             if re_obj:
                 return re_obj.group(j), "%s%s" % (line[:re_obj.start(j)], line[re_obj.end(j):]), re_obj.start(j)
         except Exception:
-            print("\n正则表达式错误！")
+            print(Fore.RED + Back.BLACK + Style.BRIGHT + "\n正则表达式错误！")
             sys.exit(0)
 
 
