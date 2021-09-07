@@ -1,14 +1,8 @@
 # cltran
-
----
-
 一款 cmd 命令行翻译器<br />​
 
 用于 cmd 各种帮助命令的文本翻译，使用腾讯云批量文本翻译，一次请求翻译 2000 字符。<br />​<br />
 ## 安装
-
----
-
 **要求：python 3.x**
 ```
 pip3 install -r requirement.txt
@@ -16,16 +10,10 @@ pip3 install -r requirement.txt
 
 
 ## 准备
-
----
-
 在 cltran.ini 中填写腾讯云翻译 api 的 secretId 和 secretKey。<br />​
 
 在[腾讯云控制台](https://console.cloud.tencent.com/) ->云产品->访问管理->访问密钥->API密钥管理中申请。<br />每月免费 500 万字符额度。<br />​<br />
 ## 使用
-
----
-
 ```
 > cltran -h
 usage: cltran <cmd>     cmd为'-h'或'-hlep'显示帮助信息，为其它命令则执行命令并翻译, 
