@@ -52,7 +52,7 @@ def tran_texts(bar, content_lines, relist, retu_relist=None):
 
         if re_content:
             tran_len = len(''.join(tran_lines)) + len(tran_lines) * 2
-            re_content_len = len(re_content[0]) + 2
+            re_content_len = len(re_content[0]) + 5
             if tran_len + re_content_len < 2000:
                 tran_len += re_content_len
                 re_content_lines.append((i, re_content))
