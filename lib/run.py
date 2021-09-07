@@ -59,7 +59,7 @@ def tran_texts(bar, content_lines, relist, retu_relist=None):
                 tran_lines.append(re_content[0])
 
             if len(lines) == i:
-                lines.append("[待定 <%d>]" % i)
+                lines.append("[cltran：未翻译行 <%d>]" % i)
 
         elif len(lines) == i:
             lines.append(line)
